@@ -93,8 +93,8 @@ function initForm() {
 
         if (!willAttend) {
             transferDetailsGroup.style.display = 'none';
-            childrenTableGroup.style.display = 'none';
-            childrenCountGroup.style.display = 'none';
+            document.getElementById('children-table-group').style.display = 'none';
+            document.getElementById('children-count-group').style.display = 'none';
         }
     });
 
@@ -112,14 +112,14 @@ function initForm() {
     childrenSelect.addEventListener('change', function () {
         const hasChildren = this.value === 'yes';
         childrenTableGroup.style.display = hasChildren ? 'block' : 'none';
+        childrenCountGroup.style.display = hasChildren ? 'block' : 'none';
         if (!hasChildren) {
-            childrenCountGroup.style.display = 'none';
             childrenTableSelect.value = '';
         }
     });
 
     childrenTableSelect.addEventListener('change', function () {
-        childrenCountGroup.style.display = this.value === 'yes' ? 'block' : 'none';
+        // кількість дітей завжди видима при наявності дітей
     });
 
     // Показати поле для свого варіанту напою
