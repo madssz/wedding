@@ -121,6 +121,27 @@ function initForm() {
     childrenSelect.addEventListener('change', function () {
         const hasChildren = this.value === 'yes';
         childrenCountGroup.style.display = hasChildren ? 'block' : 'none';
+        if (!hasChildren) {
+            document.getElementById('children-count').value = '';
+            document.getElementById('children-count-other').style.display = 'none';
+            document.getElementById('children-count-other').value = '';
+        }
+    });
+
+    // Показати числове поле для кількості гостей
+    const guestsCountSelect = document.getElementById('guests-count');
+    const guestsCountOther = document.getElementById('guests-count-other');
+    guestsCountSelect.addEventListener('change', function () {
+        guestsCountOther.style.display = this.value === 'other' ? 'block' : 'none';
+        if (this.value !== 'other') guestsCountOther.value = '';
+    });
+
+    // Показати числове поле для кількості дітей
+    const childrenCountSelect = document.getElementById('children-count');
+    const childrenCountOther = document.getElementById('children-count-other');
+    childrenCountSelect.addEventListener('change', function () {
+        childrenCountOther.style.display = this.value === 'other' ? 'block' : 'none';
+        if (this.value !== 'other') childrenCountOther.value = '';
     });
 
     // Показати поле для свого варіанту напою
@@ -167,6 +188,12 @@ function initForm() {
             if (!guestsCount.value) {
                 showError(guestsCount, 'Будь ласка, вкажіть кількість гостей');
                 hasErrors = true;
+            } else if (guestsCount.value === 'other') {
+                const otherVal = document.getElementById('guests-count-other');
+                if (!otherVal.value || otherVal.value < 6) {
+                    showError(otherVal, 'Будь ласка, введіть кількість (мінімум 6)');
+                    hasErrors = true;
+                }
             }
             if (!transferVal.value) {
                 showError(transferVal, 'Будь ласка, оберіть варіант трансферу');
@@ -194,13 +221,18 @@ function initForm() {
         data.name = formData.get('name');
         data.phone = formData.get('phone');
         data.attendance = formData.get('attendance');
-        data.guests_count = formData.get('guests_count');
+        data.guests_count = guestsCount.value === 'other'
+            ? document.getElementById('guests-count-other').value
+            : formData.get('guests_count');
         data.alcohol = formData.getAll('alcohol').join(', ');
         if (formData.get('alcohol_other')) {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
         data.children = formData.get('children');
-        data.children_count = formData.get('children_count');
+        const childrenCountVal = formData.get('children_count');
+        data.children_count = childrenCountVal === 'other'
+            ? document.getElementById('children-count-other').value
+            : childrenCountVal;
         data.transfer = formData.get('transfer');
         data.wishes = formData.get('wishes');
         data.timestamp = new Date().toISOString();
