@@ -222,14 +222,9 @@ function initForm() {
                 });
             })
             .catch(() => {
-                // Якщо помилка — зберігаємо локально
-                saveResponse(data);
-                form.style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
-                document.getElementById('success-message').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Надіслати відповідь</span>';
+                alert('Сталася помилка при відправці. Будь ласка, спробуйте ще раз.');
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -249,14 +244,6 @@ function sendToGoogleSheets(data) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
-}
-
-// Збереження відповіді в localStorage (резервне)
-function saveResponse(data) {
-    const responses = JSON.parse(localStorage.getItem('wedding_responses') || '[]');
-    responses.push(data);
-    localStorage.setItem('wedding_responses', JSON.stringify(responses));
-    console.log('Відповідь збережено локально:', data);
 }
 
 // ===== Ініціалізація =====
