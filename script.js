@@ -263,6 +263,22 @@ function initForm() {
                 showError(transferVal, 'Будь ласка, оберіть варіант трансферу');
                 hasErrors = true;
             }
+
+            // Валідація полів імен гостей
+            form.querySelectorAll('.guest-name-field').forEach((field, idx) => {
+                if (!field.value.trim()) {
+                    showError(field, idx === 0 ? 'Будь ласка, введіть ваше ім\'я' : 'Будь ласка, введіть ім\'я гостя');
+                    hasErrors = true;
+                }
+            });
+
+            // Валідація полів імен дітей
+            form.querySelectorAll('.child-name-field').forEach((field, idx) => {
+                if (!field.value.trim()) {
+                    showError(field, 'Будь ласка, введіть ім\'я дитини ' + (idx + 1));
+                    hasErrors = true;
+                }
+            });
         }
 
         if (hasErrors) {
