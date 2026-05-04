@@ -59,6 +59,20 @@ function initPreloader() {
     });
 }
 
+// ===== Валідація форми =====
+function showError(input, message) {
+    input.classList.add('input-error');
+    const error = document.createElement('span');
+    error.className = 'field-error';
+    error.textContent = message;
+    input.parentNode.appendChild(error);
+}
+
+function clearErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.remove());
+    document.querySelectorAll('.input-error').forEach(el => el.classList.remove('input-error'));
+}
+
 // ===== Форма RSVP =====
 function initForm() {
     const form = document.getElementById('rsvp-form');
@@ -97,6 +111,44 @@ function initForm() {
     // Обробка форми
     form.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        // Валідація
+        clearErrors();
+        let hasErrors = false;
+
+        const name = form.querySelector('#guest-name');
+        const phone = form.querySelector('#guest-phone');
+        const attendanceVal = form.querySelector('#attendance');
+        const guestsCount = form.querySelector('#guests-count');
+        const transferVal = form.querySelector('#transfer');
+
+        if (!name.value.trim()) {
+            showError(name, 'Будь ласка, введіть ваше ім\'я та прізвище');
+            hasErrors = true;
+        }
+
+        if (!phone.value.trim()) {
+            showError(phone, 'Будь ласка, введіть номер телефону');
+            hasErrors = true;
+        }
+
+        if (!attendanceVal.value) {
+            showError(attendanceVal, 'Будь ласка, оберіть варіант');
+            hasErrors = true;
+        }
+
+        if (attendanceVal.value === 'yes') {
+            if (!guestsCount.value) {
+                showError(guestsCount, 'Будь ласка, вкажіть кількість гостей');
+                hasErrors = true;
+            }
+            if (!transferVal.value) {
+                showError(transferVal, 'Будь ласка, оберіть варіант трансферу');
+                hasErrors = true;
+            }
+        }
+
+        if (hasErrors) return;
 
         const submitBtn = form.querySelector('.btn-submit');
         submitBtn.disabled = true;
