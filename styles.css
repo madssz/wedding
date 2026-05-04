@@ -307,6 +307,7 @@ body {
 }
 
 .detail-note {
+    display: block;
     font-size: 0.85rem;
     color: var(--pistachio-dark);
     font-weight: 400;
@@ -320,6 +321,7 @@ body {
 
 .detail-link {
     display: inline-block;
+    margin-top: 12px;
     font-size: 0.85rem;
     color: var(--pistachio-dark);
     text-decoration: none;
