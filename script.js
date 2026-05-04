@@ -1,6 +1,6 @@
 // ===== Зворотній відлік =====
 function initCountdown() {
-    const weddingDate = new Date('2026-07-25T16:00:00');
+    const weddingDate = new Date('2026-07-25T16:00:00+03:00');
 
     function updateCountdown() {
         const now = new Date();
