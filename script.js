@@ -118,6 +118,63 @@ function initForm() {
     const childrenSelect = document.getElementById('children');
     const childrenCountGroup = document.getElementById('children-count-group');
 
+    // Показати числове поле для кількості гостей
+    const guestsCountSelect = document.getElementById('guests-count');
+    const guestsCountOther = document.getElementById('guests-count-other');
+
+    // Показати числове поле для кількості дітей
+    const childrenCountSelect = document.getElementById('children-count');
+    const childrenCountOther = document.getElementById('children-count-other');
+
+    // === Поля імен ===
+    function getGuestCount() {
+        const val = guestsCountSelect.value;
+        if (val === 'other') return parseInt(guestsCountOther.value) || 0;
+        return parseInt(val) || 0;
+    }
+
+    function getChildrenCount() {
+        const val = childrenCountSelect.value;
+        if (val === 'other') return parseInt(childrenCountOther.value) || 0;
+        return parseInt(val) || 0;
+    }
+
+    function renderGuestNameFields() {
+        const count = getGuestCount();
+        const container = document.getElementById('guests-names-group');
+        container.innerHTML = '';
+        if (count < 1) return;
+        const mainName = document.getElementById('guest-name').value.trim();
+        for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'guest-name-field';
+            input.placeholder = i === 1 ? 'Ваше ім\'я' : 'Ім\'я гостя ' + i;
+            if (i === 1) input.value = mainName;
+            div.appendChild(input);
+            container.appendChild(div);
+        }
+    }
+
+    function renderChildrenNameFields() {
+        const count = getChildrenCount();
+        const container = document.getElementById('children-names-group');
+        container.innerHTML = '';
+        if (count < 1) return;
+        for (let i = 1; i <= count; i++) {
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'child-name-field';
+            input.placeholder = 'Ім\'я дитини ' + i;
+            div.appendChild(input);
+            container.appendChild(div);
+        }
+    }
+
     childrenSelect.addEventListener('change', function () {
         const hasChildren = this.value === 'yes';
         childrenCountGroup.style.display = hasChildren ? 'block' : 'none';
@@ -125,23 +182,30 @@ function initForm() {
             document.getElementById('children-count').value = '';
             document.getElementById('children-count-other').style.display = 'none';
             document.getElementById('children-count-other').value = '';
+            document.getElementById('children-names-group').innerHTML = '';
         }
     });
 
-    // Показати числове поле для кількості гостей
-    const guestsCountSelect = document.getElementById('guests-count');
-    const guestsCountOther = document.getElementById('guests-count-other');
     guestsCountSelect.addEventListener('change', function () {
         guestsCountOther.style.display = this.value === 'other' ? 'block' : 'none';
         if (this.value !== 'other') guestsCountOther.value = '';
+        renderGuestNameFields();
     });
 
-    // Показати числове поле для кількості дітей
-    const childrenCountSelect = document.getElementById('children-count');
-    const childrenCountOther = document.getElementById('children-count-other');
+    guestsCountOther.addEventListener('input', renderGuestNameFields);
+
     childrenCountSelect.addEventListener('change', function () {
         childrenCountOther.style.display = this.value === 'other' ? 'block' : 'none';
         if (this.value !== 'other') childrenCountOther.value = '';
+        renderChildrenNameFields();
+    });
+
+    childrenCountOther.addEventListener('input', renderChildrenNameFields);
+
+    // Синхронізація першого поля імені гостей з полем #guest-name
+    document.getElementById('guest-name').addEventListener('input', function () {
+        const firstField = document.querySelector('#guests-names-group .guest-name-field');
+        if (firstField) firstField.value = this.value;
     });
 
     // Показати поле для свого варіанту напою
@@ -233,6 +297,10 @@ function initForm() {
         data.children_count = childrenCountVal === 'other'
             ? document.getElementById('children-count-other').value
             : childrenCountVal;
+        data.guest_names = Array.from(form.querySelectorAll('.guest-name-field'))
+            .map(i => i.value.trim()).filter(Boolean).join(', ');
+        data.children_names = Array.from(form.querySelectorAll('.child-name-field'))
+            .map(i => i.value.trim()).filter(Boolean).join(', ');
         data.transfer = formData.get('transfer');
         data.wishes = formData.get('wishes');
         data.timestamp = new Date().toISOString();

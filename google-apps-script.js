@@ -6,7 +6,7 @@
 // 1. Відкрийте Google Sheets: https://sheets.google.com
 // 2. Створіть нову таблицю з назвою "Весілля — Відповіді гостей"
 // 3. У першому рядку додайте заголовки стовпців:
-//    Timestamp | Ім'я | Телефон | Присутність | Кількість гостей | Напої | Діти | Кількість дітей | Трансфер | Побажання
+//    Timestamp | Ім'я | Телефон | Присутність | Кількість гостей | Імена гостей | Напої | Діти | Кількість дітей | Імена дітей | Трансфер | Побажання
 // 4. Відкрийте меню: Розширення → Apps Script
 // 5. Видаліть весь код і вставте цей скрипт
 // 6. Натисніть "Розгорнути" → "Нове розгортання"
@@ -40,9 +40,11 @@ function doPost(e) {
       data.phone || '',
       data.attendance === 'yes' ? 'Так' : 'Ні',
       data.guests_count || '',
-      data.alcohol || '',
+      data.guest_names || '',
+      data.alcohol || '',,
       data.children === 'yes' ? 'Так' : 'Ні',
       data.children_count || '',
+      data.children_names || '',
       data.transfer === 'ivano-frankivsk' ? 'Так, з Івано-Франківська' :
         data.transfer === 'dragomyrchany' ? 'Так, з Драгомирчан' :
         data.transfer === 'lysec' ? 'Так, з Лисця' :
