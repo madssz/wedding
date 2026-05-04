@@ -564,6 +564,12 @@ body {
     border-color: var(--pistachio);
 }
 
+.form-note {
+    font-size: 0.8rem;
+    color: var(--pistachio-dark);
+    margin-top: 8px;
+}
+
 .field-error {
     display: block;
     color: #e05555;

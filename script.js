@@ -83,6 +83,18 @@ function initForm() {
     const transferSelect = document.getElementById('transfer');
     const transferDetailsGroup = document.getElementById('transfer-details-group');
 
+    // Очищення помилки конкретного поля при зміні
+    function clearFieldError(e) {
+        const input = e.target;
+        if (input.classList.contains('input-error')) {
+            input.classList.remove('input-error');
+            const errorEl = input.parentNode.querySelector('.field-error');
+            if (errorEl) errorEl.remove();
+        }
+    }
+    form.addEventListener('input', clearFieldError);
+    form.addEventListener('change', clearFieldError);
+
     // Показати/сховати поля залежно від відвідування
     attendance.addEventListener('change', function () {
         const willAttend = this.value === 'yes';
@@ -93,14 +105,13 @@ function initForm() {
 
         if (!willAttend) {
             transferDetailsGroup.style.display = 'none';
-            document.getElementById('children-table-group').style.display = 'none';
             document.getElementById('children-count-group').style.display = 'none';
         }
     });
 
-    // Показати деталі трансферу
+    // Показати деталі трансферу (при будь-якому варіанті «так»)
     transferSelect.addEventListener('change', function () {
-        transferDetailsGroup.style.display = this.value === 'yes' ? 'block' : 'none';
+        transferDetailsGroup.style.display = (this.value && this.value !== 'no') ? 'block' : 'none';
     });
 
     // Курсор в кінець поля телефону при фокусі
@@ -110,21 +121,11 @@ function initForm() {
         this.setSelectionRange(len, len);
     });
     const childrenSelect = document.getElementById('children');
-    const childrenTableGroup = document.getElementById('children-table-group');
     const childrenCountGroup = document.getElementById('children-count-group');
-    const childrenTableSelect = document.getElementById('children-table');
 
     childrenSelect.addEventListener('change', function () {
         const hasChildren = this.value === 'yes';
-        childrenTableGroup.style.display = hasChildren ? 'block' : 'none';
         childrenCountGroup.style.display = hasChildren ? 'block' : 'none';
-        if (!hasChildren) {
-            childrenTableSelect.value = '';
-        }
-    });
-
-    childrenTableSelect.addEventListener('change', function () {
-        // кількість дітей завжди видима при наявності дітей
     });
 
     // Показати поле для свого варіанту напою
@@ -204,7 +205,7 @@ function initForm() {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
         data.children = formData.get('children');
-        data.children_table = formData.get('children_table');
+        data.children_table = data.children === 'yes' ? 'yes' : '';
         data.children_count = formData.get('children_count');
         data.transfer = formData.get('transfer');
         data.transfer_details = formData.get('transfer_details');
