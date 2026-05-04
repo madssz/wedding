@@ -152,6 +152,9 @@ function initForm() {
         if (!phone.value.trim()) {
             showError(phone, 'Будь ласка, введіть номер телефону');
             hasErrors = true;
+        } else if (!/^[\d\s\+\-\(\)]{7,15}$/.test(phone.value.trim())) {
+            showError(phone, 'Введіть коректний номер телефону (наприклад: +380 67 123 45 67)');
+            hasErrors = true;
         }
 
         if (!attendanceVal.value) {
