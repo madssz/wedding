@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Денис & Вікторія — Весілля 25.07.2026</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Прелоадер -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">Д & В</span>
+        </div>
+    </div>
+
+    <!-- Головна секція -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle animate-on-scroll">Запрошуємо на наше весілля</p>
+            <h1 class="hero-title animate-on-scroll">
+                <span class="name">Денис</span>
+                <span class="ampersand">&</span>
+                <span class="name">Вікторія</span>
+            </h1>
+            <div class="hero-date animate-on-scroll">
+                <div class="date-line"></div>
+                <span>25 липня 2026</span>
+                <div class="date-line"></div>
+            </div>
+            <a href="#details" class="scroll-down">
+                <span>Детальніше</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Секція з фото -->
+    <section class="photo-section" id="photo">
+        <div class="container">
+            <div class="photo-frame animate-on-scroll">
+                <img src="wedding_invite_photo.jpg" alt="Денис та Вікторія" class="couple-photo">
+            </div>
+            <div class="photo-quote animate-on-scroll">
+                <p>«Кожна любовна історія прекрасна, але наша — улюблена»</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Деталі весілля -->
+    <section class="details" id="details">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Деталі свята</h2>
+            <div class="details-grid">
+                <div class="detail-card animate-on-scroll">
+                    <div class="detail-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Дата</h3>
+                    <p>25 липня 2026 року</p>
+                    <span class="detail-note">Субота</span>
+                </div>
+                <div class="detail-card animate-on-scroll">
+                    <div class="detail-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Час</h3>
+                    <p>14:00</p>
+                    <span class="detail-note">Збір гостей</span>
+                </div>
+                <div class="detail-card animate-on-scroll">
+                    <div class="detail-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3>Місце</h3>
+                    <p>Ресторан «Прованс»</p>
+                    <span class="detail-note">вул. Сагайдачного, 1, Підгір'я, Івано-Франківська обл.</span>
+                    <a href="https://www.google.com/maps/dir//Provans,+%D0%B2%D1%83%D0%BB.+%D0%A1%D0%B0%D0%B3%D0%B0%D0%B9%D0%B4%D0%B0%D1%87%D0%BD%D0%BE%D0%B3%D0%BE,+1,+Pidhir'ya,+Ivano-Frankivsk+Oblast,+77706/@48.9312292,24.696733,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4730c9c8a78a4365:0x992262453e49f478!2m2!1d24.5123026!2d48.7853044?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="detail-link">Відкрити на карті →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Зворотній відлік -->
+    <section class="countdown-section" id="countdown">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">До нашого свята залишилось</h2>
+            <div class="countdown animate-on-scroll" id="countdown-timer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">днів</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">годин</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">хвилин</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">0</span>
+                    <span class="countdown-label">секунд</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таймлайн дня -->
+    <section class="timeline" id="timeline">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Програма дня</h2>
+            <div class="timeline-list">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-time">14:00</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Збір гостей</h4>
+                        <p>Welcome-зона з напоями та закусками</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-time">15:00</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Церемонія</h4>
+                        <p>Урочиста церемонія одруження</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Банкет</h4>
+                        <p>Святкова вечеря та розваги</p>
+                    </div>
+                </div>
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-time">18:00</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Вечірка</h4>
+                        <p>Танці та веселощі до пізньої ночі</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Опитування гостей -->
+    <section class="rsvp" id="rsvp">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Підтвердження присутності</h2>
+            <p class="section-subtitle animate-on-scroll">Будь ласка, заповніть форму до 1 липня 2026 року</p>
+            
+            <form class="rsvp-form animate-on-scroll" id="rsvp-form">
+                <div class="form-group">
+                    <label for="guest-name">Ваше ім'я та прізвище</label>
+                    <input type="text" id="guest-name" name="name" required placeholder="Введіть ваше ім'я та прізвище">
+                </div>
+
+                <div class="form-group">
+                    <label for="guest-phone">Номер телефону</label>
+                    <input type="tel" id="guest-phone" name="phone" required placeholder="Введіть ваш номер телефону">
+                </div>
+
+                <div class="form-group">
+                    <label for="attendance">Чи зможете бути присутніми?</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="" disabled selected>Оберіть варіант</option>
+                        <option value="yes">Так, з радістю буду!</option>
+                        <option value="no">На жаль, не зможу</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="guests-group">
+                    <label for="guests-count">Кількість гостей (включаючи вас)</label>
+                    <select id="guests-count" name="guests_count">
+                        <option value="" disabled selected>Оберіть кількість</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5+</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="alcohol-group">
+                    <label>Які напої ви вживаєте?</label>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="wine">
+                            <span class="checkmark"></span>
+                            <span>Вино</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="champagne">
+                            <span class="checkmark"></span>
+                            <span>Шампанське</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="whiskey">
+                            <span class="checkmark"></span>
+                            <span>Віскі</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="vodka">
+                            <span class="checkmark"></span>
+                            <span>Горілка</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="cognac">
+                            <span class="checkmark"></span>
+                            <span>Коньяк</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="beer">
+                            <span class="checkmark"></span>
+                            <span>Пиво</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="non-alcohol">
+                            <span class="checkmark"></span>
+                            <span>Безалкогольні</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alcohol" value="other" id="alcohol-other">
+                            <span class="checkmark"></span>
+                            <span>Свій варіант</span>
+                        </label>
+                    </div>
+                    <input type="text" id="alcohol-other-text" name="alcohol_other" placeholder="Вкажіть ваш напій" style="display: none; margin-top: 12px;">
+                </div>
+
+                <div class="form-group" id="transfer-group">
+                    <label for="transfer">Чи потрібен вам трансфер?</label>
+                    <select id="transfer" name="transfer">
+                        <option value="" disabled selected>Оберіть варіант</option>
+                        <option value="yes">Так, потрібен трансфер</option>
+                        <option value="no">Ні, дістанусь самостійно</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="transfer-details-group" style="display: none;">
+                    <label for="transfer-details">Звідки вас забрати?</label>
+                    <input type="text" id="transfer-details" name="transfer_details" placeholder="Вкажіть адресу або район">
+                </div>
+
+                <div class="form-group">
+                    <label for="wishes">Побажання або коментарі</label>
+                    <textarea id="wishes" name="wishes" rows="3" placeholder="Алергії, дієтичні обмеження тощо"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>Надіслати відповідь</span>
+                </button>
+            </form>
+
+            <!-- Повідомлення про успіх -->
+            <div class="success-message" id="success-message" style="display: none;">
+                <div class="success-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Дякуємо!</h3>
+                <p>Вашу відповідь отримано. Будемо раді бачити вас на нашому святі!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-names">Д & В</div>
+            <p class="footer-date">25.07.2026</p>
+            <p class="footer-text">З любов'ю чекаємо на вас!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

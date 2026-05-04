@@ -1,0 +1,713 @@
+/* ===== Базові стилі ===== */
+:root {
+    --white: #ffffff;
+    --pistachio: #93C572;
+    --pistachio-light: #d4e8c4;
+    --pistachio-lighter: #eef5e9;
+    --pistachio-dark: #6b9e4a;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a8;
+    --text-dark: #2c2c2c;
+    --text-medium: #5a5a5a;
+    --text-light: #8a8a8a;
+    --bg-cream: #fdfcfa;
+    --shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    background-color: var(--bg-cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== Прелоадер ===== */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader-ring {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--pistachio-light);
+    border-top-color: var(--pistachio);
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+}
+
+.preloader-text {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--pistachio-dark);
+    font-weight: 400;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== Герой секція ===== */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--pistachio-lighter) 0%, var(--white) 50%, var(--pistachio-lighter) 100%);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(147, 197, 114, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(147, 197, 114, 0.08) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(2%, -1%) rotate(1deg); }
+    66% { transform: translate(-1%, 1%) rotate(-1deg); }
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    padding: 40px 24px;
+    z-index: 1;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pistachio-dark);
+    margin-bottom: 32px;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.hero-title .name {
+    display: block;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--text-dark);
+    line-height: 1.1;
+}
+
+.hero-title .ampersand {
+    display: block;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--pistachio);
+    font-style: italic;
+    margin: 8px 0;
+    font-weight: 300;
+}
+
+.hero-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    color: var(--text-medium);
+}
+
+.date-line {
+    width: 60px;
+    height: 1px;
+    background: var(--pistachio);
+}
+
+.scroll-down {
+    position: relative;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--pistachio-dark);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
+/* ===== Секція з фото ===== */
+.photo-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.photo-frame {
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+}
+
+.photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.couple-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.photo-frame:hover .couple-photo {
+    transform: scale(1.02);
+}
+
+.photo-quote {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.photo-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--text-medium);
+    font-weight: 300;
+}
+
+/* ===== Деталі весілля ===== */
+.details {
+    padding: 100px 0;
+    background: var(--pistachio-lighter);
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    margin-bottom: 48px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-top: 60px;
+}
+
+.detail-card {
+    background: var(--white);
+    padding: 48px 32px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.detail-icon {
+    color: var(--pistachio);
+    margin-bottom: 24px;
+}
+
+.detail-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.detail-card p {
+    font-size: 1rem;
+    color: var(--text-medium);
+    margin-bottom: 8px;
+}
+
+.detail-note {
+    font-size: 0.85rem;
+    color: var(--pistachio-dark);
+    font-weight: 400;
+}
+
+.detail-address {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 12px;
+}
+
+.detail-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--pistachio-dark);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 8px 16px;
+    border: 1px solid var(--pistachio-light);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.detail-link:hover {
+    background: var(--pistachio);
+    color: var(--white);
+    border-color: var(--pistachio);
+}
+
+/* ===== Зворотній відлік ===== */
+.countdown-section {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 300;
+    color: var(--pistachio-dark);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+.countdown-separator {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--pistachio-light);
+    font-weight: 300;
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
+/* ===== Таймлайн ===== */
+.timeline {
+    padding: 100px 0;
+    background: var(--pistachio-lighter);
+}
+
+.timeline-list {
+    max-width: 600px;
+    margin: 60px auto 0;
+    position: relative;
+}
+
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--pistachio-light);
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.timeline-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--pistachio-dark);
+    min-width: 60px;
+    text-align: right;
+}
+
+.timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--pistachio);
+    border: 3px solid var(--pistachio-lighter);
+    flex-shrink: 0;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.timeline-content h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+}
+
+/* ===== RSVP Форма ===== */
+.rsvp {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.rsvp-form {
+    max-width: 600px;
+    margin: 48px auto 0;
+    background: var(--bg-cream);
+    padding: 48px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--pistachio-light);
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-group select {
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232c2c2c' d='M6 8.825L1.175 4 2.238 2.938 6 6.7 9.763 2.937 10.825 4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 12px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--pistachio);
+    box-shadow: 0 0 0 3px rgba(147, 197, 114, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--white);
+    border: 1px solid var(--pistachio-light);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.checkbox-label:hover {
+    border-color: var(--pistachio);
+    background: var(--pistachio-lighter);
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--pistachio-light);
+    border-radius: 5px;
+    flex-shrink: 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+    background: var(--pistachio);
+    border-color: var(--pistachio);
+}
+
+.checkbox-label:has(input[type="checkbox"]:checked) {
+    background: var(--pistachio-lighter);
+    border-color: var(--pistachio);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 18px 32px;
+    background: var(--pistachio);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 16px;
+}
+
+.btn-submit:hover {
+    background: var(--pistachio-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(147, 197, 114, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Success message */
+.success-message {
+    text-align: center;
+    padding: 60px 24px;
+    max-width: 500px;
+    margin: 48px auto 0;
+}
+
+.success-icon {
+    color: var(--pistachio);
+    margin-bottom: 24px;
+}
+
+.success-message h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.success-message p {
+    color: var(--text-medium);
+    font-size: 1rem;
+}
+
+/* ===== Футер ===== */
+.footer {
+    padding: 60px 0;
+    background: var(--pistachio-lighter);
+    text-align: center;
+}
+
+.footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--pistachio-dark);
+    margin-bottom: 8px;
+}
+
+.footer-date {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* ===== Анімації ===== */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Адаптивність ===== */
+@media (max-width: 768px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .countdown {
+        gap: 8px;
+    }
+
+    .countdown-item {
+        min-width: 70px;
+    }
+
+    .countdown-separator {
+        font-size: 2rem;
+    }
+
+    .rsvp-form {
+        padding: 32px 24px;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-list::before {
+        left: 64px;
+    }
+
+    .timeline-time {
+        min-width: 44px;
+        font-size: 1.1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .countdown-separator {
+        display: none;
+    }
+
+    .countdown {
+        gap: 12px;
+    }
+
+    .hero-title .name {
+        font-size: 2.5rem;
+    }
+
+    .hero-title .ampersand {
+        font-size: 1.5rem;
+    }
+}
