@@ -148,7 +148,14 @@ function initForm() {
             }
         }
 
-        if (hasErrors) return;
+        if (hasErrors) {
+            const firstError = form.querySelector('.input-error');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
+            }
+            return;
+        }
 
         const submitBtn = form.querySelector('.btn-submit');
         submitBtn.disabled = true;
