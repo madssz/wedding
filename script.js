@@ -292,7 +292,7 @@ function initForm() {
         if (formData.get('alcohol_other')) {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
-        data.children = formData.get('children');
+        data.children = document.getElementById('children').value;
         const childrenCountVal = formData.get('children_count');
         data.children_count = childrenCountVal === 'other'
             ? document.getElementById('children-count-other').value
@@ -301,6 +301,10 @@ function initForm() {
             .map(i => i.value.trim()).filter(Boolean).join(', ');
         data.children_names = Array.from(form.querySelectorAll('.child-name-field'))
             .map(i => i.value.trim()).filter(Boolean).join(', ');
+        // Якщо є кількість або імена дітей, але select не обраний — встанови 'yes'
+        if (!data.children && (data.children_count || data.children_names)) {
+            data.children = 'yes';
+        }
         data.transfer = formData.get('transfer');
         data.wishes = formData.get('wishes');
         data.timestamp = new Date().toISOString();

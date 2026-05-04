@@ -42,7 +42,7 @@ function doPost(e) {
       data.guests_count || '',
       data.guest_names || '',
       data.alcohol || '',
-      data.children === 'yes' ? 'Так' : 'Ні',
+      data.children === 'yes' ? 'Так' : (data.children === 'no' ? 'Ні' : ''),
       data.children_count || '',
       data.children_names || '',
       data.transfer === 'ivano-frankivsk' ? 'Так, з Івано-Франківська' :
