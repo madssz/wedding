@@ -18,13 +18,24 @@
 //
 // =============================================================
 
+function formatTimestamp(isoString) {
+  var d = new Date(isoString);
+  var pad = function(n) { return n < 10 ? '0' + n : n; };
+  return d.getFullYear() + '-' +
+         pad(d.getMonth() + 1) + '-' +
+         pad(d.getDate()) + '  ' +
+         pad(d.getHours()) + ':' +
+         pad(d.getMinutes()) + ':' +
+         pad(d.getSeconds());
+}
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var data = JSON.parse(e.postData.contents);
     
     sheet.appendRow([
-      data.timestamp || new Date().toISOString(),
+      formatTimestamp(data.timestamp || new Date().toISOString()),
       data.name || '',
       data.phone || '',
       data.attendance === 'yes' ? 'Так' : 'Ні',
