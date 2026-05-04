@@ -94,6 +94,7 @@ function initForm() {
 
         if (!willAttend) {
             transferDetailsGroup.style.display = 'none';
+            childrenTableGroup.style.display = 'none';
             childrenCountGroup.style.display = 'none';
         }
     });
@@ -103,10 +104,22 @@ function initForm() {
         transferDetailsGroup.style.display = this.value === 'yes' ? 'block' : 'none';
     });
 
-    // Показати кількість дітей
+    // Показати поля дітей
     const childrenSelect = document.getElementById('children');
+    const childrenTableGroup = document.getElementById('children-table-group');
     const childrenCountGroup = document.getElementById('children-count-group');
+    const childrenTableSelect = document.getElementById('children-table');
+
     childrenSelect.addEventListener('change', function () {
+        const hasChildren = this.value === 'yes';
+        childrenTableGroup.style.display = hasChildren ? 'block' : 'none';
+        if (!hasChildren) {
+            childrenCountGroup.style.display = 'none';
+            childrenTableSelect.value = '';
+        }
+    });
+
+    childrenTableSelect.addEventListener('change', function () {
         childrenCountGroup.style.display = this.value === 'yes' ? 'block' : 'none';
     });
 
@@ -184,6 +197,7 @@ function initForm() {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
         data.children = formData.get('children');
+        data.children_table = formData.get('children_table');
         data.children_count = formData.get('children_count');
         data.transfer = formData.get('transfer');
         data.transfer_details = formData.get('transfer_details');
