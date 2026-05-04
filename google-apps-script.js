@@ -41,7 +41,7 @@ function doPost(e) {
       data.attendance === 'yes' ? 'Так' : 'Ні',
       data.guests_count || '',
       data.guest_names || '',
-      data.alcohol || '',,
+      data.alcohol || '',
       data.children === 'yes' ? 'Так' : 'Ні',
       data.children_count || '',
       data.children_names || '',
