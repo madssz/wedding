@@ -81,7 +81,6 @@ function initForm() {
     const alcoholGroup = document.getElementById('alcohol-group');
     const transferGroup = document.getElementById('transfer-group');
     const transferSelect = document.getElementById('transfer');
-    const transferDetailsGroup = document.getElementById('transfer-details-group');
 
     // Очищення помилки конкретного поля при зміні
     function clearFieldError(e) {
@@ -104,15 +103,11 @@ function initForm() {
         transferGroup.style.display = willAttend ? 'block' : 'none';
 
         if (!willAttend) {
-            transferDetailsGroup.style.display = 'none';
             document.getElementById('children-count-group').style.display = 'none';
         }
     });
 
-    // Показати деталі трансферу (при будь-якому варіанті «так»)
-    transferSelect.addEventListener('change', function () {
-        transferDetailsGroup.style.display = (this.value && this.value !== 'no') ? 'block' : 'none';
-    });
+
 
     // Курсор в кінець поля телефону при фокусі
     const phoneInput = document.getElementById('guest-phone');
@@ -207,7 +202,6 @@ function initForm() {
         data.children = formData.get('children');
         data.children_count = formData.get('children_count');
         data.transfer = formData.get('transfer');
-        data.transfer_details = formData.get('transfer_details');
         data.wishes = formData.get('wishes');
         data.timestamp = new Date().toISOString();
 
