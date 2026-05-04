@@ -329,7 +329,7 @@ function initForm() {
 
 // ===== Google Sheets інтеграція =====
 // Замініть URL нижче на ваш Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxI0r1129endfEES4vJ6VAoS_pVSEfRyoWKX330bQmI8D4iRSXz265rvKYd8E5ZnNWIRA/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZSzSY7WxKma29l1lWwaQJYkAXA7NMabbQAGSuUt45oM4rFbZDL6jhqb-k6KMlZFH9nA/exec';
 
 function sendToGoogleSheets(data) {
     if (!navigator.onLine) {
