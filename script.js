@@ -82,22 +82,32 @@ function initForm() {
     const transferGroup = document.getElementById('transfer-group');
     const transferSelect = document.getElementById('transfer');
     const transferDetailsGroup = document.getElementById('transfer-details-group');
+    const childrenCountGroup = document.getElementById('children-count-group');
 
     // Показати/сховати поля залежно від відвідування
     attendance.addEventListener('change', function () {
         const willAttend = this.value === 'yes';
         guestsGroup.style.display = willAttend ? 'block' : 'none';
         alcoholGroup.style.display = willAttend ? 'block' : 'none';
+        document.getElementById('children-group').style.display = willAttend ? 'block' : 'none';
         transferGroup.style.display = willAttend ? 'block' : 'none';
 
         if (!willAttend) {
             transferDetailsGroup.style.display = 'none';
+            childrenCountGroup.style.display = 'none';
         }
     });
 
     // Показати деталі трансферу
     transferSelect.addEventListener('change', function () {
         transferDetailsGroup.style.display = this.value === 'yes' ? 'block' : 'none';
+    });
+
+    // Показати кількість дітей
+    const childrenSelect = document.getElementById('children');
+    const childrenCountGroup = document.getElementById('children-count-group');
+    childrenSelect.addEventListener('change', function () {
+        childrenCountGroup.style.display = this.value === 'yes' ? 'block' : 'none';
     });
 
     // Показати поле для свого варіанту напою
@@ -173,6 +183,8 @@ function initForm() {
         if (formData.get('alcohol_other')) {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
+        data.children = formData.get('children');
+        data.children_count = formData.get('children_count');
         data.transfer = formData.get('transfer');
         data.transfer_details = formData.get('transfer_details');
         data.wishes = formData.get('wishes');

@@ -30,6 +30,8 @@ function doPost(e) {
       data.attendance === 'yes' ? 'Так' : 'Ні',
       data.guests_count || '',
       data.alcohol || '',
+      data.children === 'yes' ? 'Так' : 'Ні',
+      data.children_count || '',
       data.transfer === 'yes' ? 'Так' : 'Ні',
       data.transfer_details || '',
       data.wishes || ''
