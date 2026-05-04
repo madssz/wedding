@@ -103,7 +103,12 @@ function initForm() {
         transferDetailsGroup.style.display = this.value === 'yes' ? 'block' : 'none';
     });
 
-    // Показати поля дітей
+    // Курсор в кінець поля телефону при фокусі
+    const phoneInput = document.getElementById('guest-phone');
+    phoneInput.addEventListener('focus', function () {
+        const len = this.value.length;
+        this.setSelectionRange(len, len);
+    });
     const childrenSelect = document.getElementById('children');
     const childrenTableGroup = document.getElementById('children-table-group');
     const childrenCountGroup = document.getElementById('children-count-group');
