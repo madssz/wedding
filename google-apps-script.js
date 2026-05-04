@@ -42,9 +42,11 @@ function doPost(e) {
       data.guests_count || '',
       data.alcohol || '',
       data.children === 'yes' ? 'Так' : 'Ні',
-      data.children_table === 'yes' ? 'Окремий стіл' : (data.children_table === 'no' ? 'Разом' : ''),
       data.children_count || '',
-      data.transfer === 'yes' ? 'Так' : 'Ні',
+      data.transfer === 'ivano-frankivsk' ? 'Так, з Івано-Франківська' :
+        data.transfer === 'dragomyrchany' ? 'Так, з Драгомирчан' :
+        data.transfer === 'lysec' ? 'Так, з Лисця' :
+        data.transfer === 'no' ? 'Ні, самостійно' : '',
       data.transfer_details || '',
       data.wishes || ''
     ]);

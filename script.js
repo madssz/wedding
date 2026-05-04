@@ -205,7 +205,6 @@ function initForm() {
             data.alcohol = data.alcohol.replace('other', formData.get('alcohol_other'));
         }
         data.children = formData.get('children');
-        data.children_table = data.children === 'yes' ? 'yes' : '';
         data.children_count = formData.get('children_count');
         data.transfer = formData.get('transfer');
         data.transfer_details = formData.get('transfer_details');
