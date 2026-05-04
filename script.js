@@ -82,7 +82,6 @@ function initForm() {
     const transferGroup = document.getElementById('transfer-group');
     const transferSelect = document.getElementById('transfer');
     const transferDetailsGroup = document.getElementById('transfer-details-group');
-    const childrenCountGroup = document.getElementById('children-count-group');
 
     // Показати/сховати поля залежно від відвідування
     attendance.addEventListener('change', function () {
@@ -233,7 +232,7 @@ function initForm() {
 
 // ===== Google Sheets інтеграція =====
 // Замініть URL нижче на ваш Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcaa9PubHAPJ1IS3Ygdomwfpq7VKeuJyB-ROcPqJI1eMUQjIxEb1N9NbdyAZh6tkMGyw/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyT6JR919U8PZl8OvQXlKh-u4WqpLaodeXieY_pLZD7D_l34AxLMz4TDafTImCsotE3Yw/exec';
 
 function sendToGoogleSheets(data) {
     return fetch(GOOGLE_SCRIPT_URL, {
