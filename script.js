@@ -238,12 +238,18 @@ function initForm() {
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzpYkZNy1tqX7kyDROXaU0TnnsDpOEDrVLaKmYHZjmGc2KKG6DO_Qks01sMhVoeGC8P7g/exec';
 
 function sendToGoogleSheets(data) {
+    if (!navigator.onLine) {
+        return Promise.reject(new Error('offline'));
+    }
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
     return fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    });
+        body: JSON.stringify(data),
+        signal: controller.signal
+    }).finally(() => clearTimeout(timeoutId));
 }
 
 // ===== Ініціалізація =====
